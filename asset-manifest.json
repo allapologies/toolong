@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/toolong/static/css/main.64b21575.chunk.css",
+    "main.js": "/toolong/static/js/main.def8e6f2.chunk.js",
+    "main.js.map": "/toolong/static/js/main.def8e6f2.chunk.js.map",
+    "runtime-main.js": "/toolong/static/js/runtime-main.d8ea38c5.js",
+    "runtime-main.js.map": "/toolong/static/js/runtime-main.d8ea38c5.js.map",
+    "static/js/2.7e12733e.chunk.js": "/toolong/static/js/2.7e12733e.chunk.js",
+    "static/js/2.7e12733e.chunk.js.map": "/toolong/static/js/2.7e12733e.chunk.js.map",
+    "index.html": "/toolong/index.html",
+    "static/css/main.64b21575.chunk.css.map": "/toolong/static/css/main.64b21575.chunk.css.map",
+    "static/js/2.7e12733e.chunk.js.LICENSE.txt": "/toolong/static/js/2.7e12733e.chunk.js.LICENSE.txt",
+    "static/media/tier-logo.b46cecf9.svg": "/toolong/static/media/tier-logo.b46cecf9.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.d8ea38c5.js",
+    "static/js/2.7e12733e.chunk.js",
+    "static/css/main.64b21575.chunk.css",
+    "static/js/main.def8e6f2.chunk.js"
+  ]
+}
