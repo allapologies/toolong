@@ -24,15 +24,27 @@ const useBitlyAPI = () => {
                 const res = await response.json();
 
                 if ([200, 201].includes(response.status)) {
-                    setState({ status: 'success', error: null, result: res.link });
+                    setState({
+                        status: 'success',
+                        error: null,
+                        result: res.link,
+                    });
                 } else {
-                    setState({ status: 'error', error: res.description, result: '' });
+                    setState({
+                        status: 'error',
+                        error: res.description,
+                        result: '',
+                    });
                 }
             } catch (e) {
                 if (e instanceof Error) {
                     setState({ status: 'error', error: e.message, result: '' });
                 }
-                setState({ status: 'error', error: "Unknown error", result: '' });
+                setState({
+                    status: 'error',
+                    error: 'Unknown error',
+                    result: '',
+                });
             }
         },
         [state, setState],

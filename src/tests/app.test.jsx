@@ -10,10 +10,11 @@ const unmockedFetch = global.fetch;
 const unmockedClipboard = global.navigator.clipboard;
 
 beforeAll(() => {
-    global.fetch = () => Promise.resolve({
-        status: 200,
-        json: () => Promise.resolve({ link: 'https://bit.ly/456' }),
-    });
+    global.fetch = () =>
+        Promise.resolve({
+            status: 200,
+            json: () => Promise.resolve({ link: 'https://bit.ly/456' }),
+        });
     global.navigator.clipboard = {
         writeText: () => Promise.resolve(),
     };
@@ -32,7 +33,9 @@ test('renders', async () => {
     await user.type(screen.getByLabelText(/url/i), 'http://www.tier.com');
     user.click(screen.getByRole('button', { text: 'Url to shorten' }));
 
-    expect(await screen.findByText(/https:\/\/bit\.ly\/456 copied to clipboard!/)).toBeDefined();
+    expect(
+        await screen.findByText(/https:\/\/bit\.ly\/456 copied to clipboard!/),
+    ).toBeDefined();
 
     expect(global.fetch).toHaveBeenCalledTimes(1);
     expect(global.navigator.clipboard.writeText).toHaveBeenCalledTimes(1);
