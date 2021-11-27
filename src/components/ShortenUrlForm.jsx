@@ -1,44 +1,53 @@
-/* eslint no-unused-vars: 1 */
-
 import React, { useCallback, useState } from 'react';
+
+import useClipboard from './useClipboard';
+import useBitlyAPI from './useBitlyAPI';
 
 const ShortenUrlForm = () => {
     const [value, setValue] = useState('');
 
+    const { status, result, error, getShortLink } = useBitlyAPI();
+    const { save: saveToClipboard } = useClipboard();
+
     const onChange = useCallback(
         (e) => {
-            // TODO: Set the component's new state based on the user's input
+            setValue(e.target.value);
         },
-        [
-            /* TODO: Add necessary deps */
-        ],
+        [],
     );
 
     const onSubmit = useCallback(
-        (e) => {
-            e.preventDefault();
-            // TODO: shorten url and copy to clipboard
+        (event) => {
+            event.preventDefault();
+            getShortLink(value);
         },
-        [
-            /* TODO: necessary deps */
-        ],
+        [value],
+    );
+
+    React.useEffect(
+        () => {
+            if (result) {
+                saveToClipboard(result);
+            }
+        },
+        [result],
     );
 
     return (
         <form onSubmit={onSubmit}>
-            <label htmlFor="shorten">
+            <label htmlFor='shorten'>
                 Url:
                 <input
-                    placeholder="Url to shorten"
-                    id="shorten"
-                    type="text"
+                    placeholder='Url to shorten'
+                    id='shorten'
+                    type='text'
                     value={value}
                     onChange={onChange}
                 />
             </label>
-            <input type="submit" value="Shorten and copy URL" />
-            {/* TODO: show below only when the url has been shortened and copied */}
-            <div>{/* Show shortened url --- copied! */}</div>
+            <input type='submit' value='Shorten and copy URL' disabled={status === 'loading' || !value} />
+            {status === 'success' && <div className="success">{`${result} copied to clipboard!`}</div>}
+            {status === 'error' && <div className="error">{error}</div>}
         </form>
     );
 };
