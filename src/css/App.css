@@ -39,3 +39,11 @@ input[type='submit'] {
 input[type='submit']:hover {
     color: #fff;
 }
+
+.success {
+    color: #69d2aa;
+}
+
+.error {
+    color: #a50000;
+}
